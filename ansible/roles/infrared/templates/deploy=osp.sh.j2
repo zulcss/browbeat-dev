@@ -1,0 +1,41 @@
+#!/bin/bash
+
+source {{ infrared_venv }}/bin/activate
+
+infrared virsh --cleanup yes --host-address {{ host }} --host-key {{ host_key }}
+
+infrared virsh -vv \
+    -o provision.yml \
+    --topology-nodes {{ topology }}  \
+    --host-address {{ host }} \
+    --host-key {{ host_key }} \
+    {% if memory_overcommit is defined %}
+    --host-memory-overcommit true \
+    {% endif %}
+    {% if images_url is defined %}
+    --image-url {{ images_url }}
+    {% endif %}
+
+infrared tripleo-undercloud -vv \
+    -o install.yml \
+    -o undercloud-install.yml \
+    --version {{ version }} \
+    {% if ntp_server is defined %}
+    --ntp-server {{ ntp_server }} \
+    {% endif %}
+    {% if ssl is defined %}
+    --ssl {{ ssl }} \
+    {% endif %}
+    --build {{ build }} 
+
+infrared tripleo-undercloud -vv \
+    -o undercloud-images.yml \
+    --images-task=import \
+    --images-url=https://images.rdoproject.org/{{ version }}/rdo_trunk/current-tripleo/stable/
+
+infrared tripleo-overcloud -vv \
+    --version {{ version }} \
+    --deployment-files virt \
+    --introspect yes \
+    --tagging yes \
+    --deploy yes \

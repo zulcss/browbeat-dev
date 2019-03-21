@@ -1,0 +1,14 @@
+# infrared
+infrared_venv: ~/infrared-virtualenv
+infrared_checkout: ~/infrared
+infrared_env: ~/.infrared
+
+# virsh
+host: 127.0.0.1
+host_key: ~/.ssh/id_rsa
+version: 13
+deploy_type: "full"
+host_memory_overcomit: true
+
+image_url: "https://cloud.centos.org/centos/7/images/CentOS-7-x86_64-GenericCloud.qcow2"
+topology: "undercloud:1,controller:1,compute:1"

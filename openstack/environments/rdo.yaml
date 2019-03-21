@@ -1,0 +1,19 @@
+# infrared
+infrared_venv: ~/infrared-virtualenv
+infrared_checkout: ~/infrared
+infrared_env: ~/.infrared
+deploy: rdo
+
+# virsh
+host: 127.0.0.1
+host_key: ~/.ssh/id_rsa
+memory_overcommit: true
+topology: undercloud:1,controller:1,compute:1
+images_url: https://cloud.centos.org/centos/7/images/CentOS-7-x86_64-GenericCloud.qcow2
+
+# undercloud
+version: rocky
+build: current-tripleo-rdo
+#ntp_server:
+#ssl:
+extra_packages: vim,git
