@@ -1,0 +1,6 @@
+version: 0.1
+uploadpurging:
+    enabled: yes
+    age: 168h
+    interval: yes
+

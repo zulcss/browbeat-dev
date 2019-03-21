@@ -4,4 +4,4 @@
   roles:
       - nodes
       - dotfiles
-      
+      - infrared
