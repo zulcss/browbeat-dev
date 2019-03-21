@@ -1,0 +1,25 @@
+---
+- name: Add standalone deploy script
+  template:
+      src: deploy-standalone.sh.j2
+      dest: "{{ infrared_checkout }}/deploy.sh"
+      mode: 0775
+  when:
+      deploy == 'standalone'
+
+- name: Add rdo deploy script
+  template:
+      src: deploy-rdo.sh.j2
+      dest: "{{ infrared_checkout }}/deploy.sh"
+      mode: 0775
+  when:
+      deploy == 'rdo'
+
+- name: Add osp deploy script
+  template:
+      src: deploy-osp.sh.j2
+      dest: "{{ infrared_checkout }}/deploy.sh"
+      mode: 0775
+  when:
+      deploy == 'osp'
+

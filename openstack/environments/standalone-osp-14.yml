@@ -1,8 +1,0 @@
-infrared_venv: ~/infrared-virtualenv
-infrared_checkout: ~/infrared
-infrared_env: ~/.infrared
-
-host: 127.0.0.1
-host_key: ~/.ssh/id_rsa
-version: 14
-deploy_type: "standalone"

@@ -1,8 +1,11 @@
+---
+# dev
+user: chuck
+
 # infrared
 infrared_venv: ~/infrared-virtualenv
 infrared_checkout: ~/infrared
 infrared_env: ~/.infrared
-deploy: rdo
 
 # virsh
 host: 127.0.0.1

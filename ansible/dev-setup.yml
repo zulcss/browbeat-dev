@@ -4,5 +4,6 @@
   roles:
       - nodes
       - dotfiles
-      - infrared
       - docker
+      - infrared
+      - infrared-deploy
